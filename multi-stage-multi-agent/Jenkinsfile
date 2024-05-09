@@ -14,8 +14,10 @@ pipeline {
                 docker { image 'maven:3.8.1-adoptopenjdk-11' }
             }
             steps {
-                sh 'mvn -B -DskipTests clean package' // Build the Java project with Maven
-                sh 'java -jar target/HelloWorld.jar' // Run the Java program
+                // Compile the Java program
+                    sh 'javac HelloWorld.java'
+                    // Run the Java program
+                    sh 'java HelloWorld'
             }
         }
     }
