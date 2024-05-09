@@ -6,9 +6,7 @@ pipeline {
         docker { image 'maven:3.8.1-adoptopenjdk-11' }
       }
       steps {
-        def className = "HelloWorld"
-        sh "mvn clean compile exec:java -Dexec.mainClass=='${className}'"
-
+        sh "mvn clean compile"
       }
     }
     stage('Front-end') {
@@ -16,7 +14,7 @@ pipeline {
         docker { image 'node:16-alpine' }
       }
       steps {
-        sh 'node hello.js'
+        sh 'npm install'
       }
     }
   }
